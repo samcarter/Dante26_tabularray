@@ -1,0 +1,38 @@
+name: Check Build
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: check
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: 
+          submodules: true
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v3
+        with:
+           package_file: ./.github/tl_packages
+      - name: Compile presentation
+        env:
+          TMPDIR: ${{ runner.temp }}      
+        run: |
+          latexmk --pdf -g Zisterzienser
+          latexmk --pdf -g Xisterzienser
+          latexmk --pdf -g Zisterzienser
+          mkdir art
+          cp Zisterzienser.pdf art/
+      - name: Upload build artifats
+        uses: actions/upload-artifact@v7
+        with:
+          path: art
+          archive: false

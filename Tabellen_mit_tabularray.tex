@@ -1,0 +1,184 @@
+% !TEX spellcheck = de
+\DocumentMetadata{lang=de}
+\documentclass{ltx-talk}
+
+\makeatletter
+\providecommand*{\input@path}{}
+\g@addto@macro\input@path{{./include/}{./beamertheme-sam/}}
+\makeatother
+
+\definecolor{theme}{HTML}{870030}
+
+\usepackage[
+  themecolor=theme,
+]{talkthemesam}
+
+\tcbset{colback=gray!10,before lower app={\centering}}
+
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+\usepackage{lucide-icons}
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{tikz}
+\UseTblrLibrary{counter}
+\UseTblrLibrary{amsmath}
+
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{\jobname.bib}
+\DeclareFieldFormat{doi}{%
+  \newline
+  \mkbibacro{DOI}\addcolon\space
+  \ifhyperref
+    {\href{https://doi.org/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}}
+\DeclareFieldFormat{url}{\newline\mkbibacro{URL}\addcolon\space\url{#1}}    
+
+\title{Tabellen mit tabularray}
+\titlegraphic{Schloss_Biebrich,_Nordseite,_Wiesbaden-Biebrich,_150904,_ako}
+\titlecredit{
+  Titelbild: \href{https://commons.wikimedia.org/wiki/File:Schloss_Biebrich,_Nordseite,_Wiesbaden-Biebrich,_150904,_ako.jpg}{Ansgar Koreng (CC BY 3.0 via wikimedia commons)}%
+}
+\author{samcarter}
+\institute{Dante Herbsttagung Wiesbaden}
+\date{25.\,-- 26.\ September 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \frametitle{Was ist tabularray}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item modernes Paket für Tabellen und Arrays
+        \item veröffentlicht in 2021 von Jianrui Lyu
+        \item adoptiert von den TeXackers
+        \item erlaubt Trennung von Format und Inhalt
+        \item sehr mächtig
+      \end{itemize}   
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-question-mark}\hspace*{1cm}
+    \end{column}
+  \end{columns}  
+\end{frame}
+
+\begin{frame*}
+  \frametitle{Einfaches Beispiel}
+  \begin{tcblisting}{}
+    \usepackage{tabularray}
+    
+    \begin{tblr}{}
+      a & b & c\\
+      1 & 2 & 3\\
+      4 & 5 & 6\\      
+    \end{tblr}
+  \end{tcblisting}  
+\end{frame*}
+
+\begin{frame*}
+  \frametitle{Viele Wege führen nach Rom...}
+  \tcbset{equal height group=diabox, valign=center}%
+  \vskip-0.4cm
+  
+  \begin{columns}[vertical-alignment=top]
+    \begin{column}{.3\textwidth}
+      \begin{tcblisting}{
+        sidebyside=false,
+        listing above text,
+        title=Direkt
+      }
+        \begin{tblr}{}
+          \hline[.08em]
+          a & b & c\\
+          \hline[.05em]
+          1 & 2 & 3\\
+          \hline[.08em]
+        \end{tblr}
+      \end{tcblisting}  
+    \end{column}
+    \begin{column}{.3\textwidth}
+      \begin{tcblisting}{
+        sidebyside=false,
+        listing above text,
+        title=Tabellen-Präamble
+      }
+        \begin{tblr}{
+          hline{1,Z}={.08em},
+          hline{2}={.05em}
+        }
+          a & b & c\\
+          1 & 2 & 3\\ 
+        \end{tblr}
+      \end{tcblisting}  
+    \end{column}  
+    \begin{column}{.3\textwidth}
+      \begin{tcblisting}{
+        sidebyside=false,
+        listing above text,
+        title=Global
+      }
+        \SetTblrInner{
+          hline{1,Z}={.08em},
+          hline{2}={.05em}
+        }
+        \begin{tblr}{}
+          a & b & c\\
+          1 & 2 & 3\\ 
+        \end{tblr}
+      \end{tcblisting}  
+    \end{column}        
+  \end{columns}
+\end{frame*}
+
+\begin{frame*}
+  \frametitle{Werkzeugkiste: Linien}
+\end{frame*}
+
+%linien
+%
+%farben
+%
+%zellen können noch mehr, mode text imath
+%
+% columns, rows
+%
+%alignment, mergen, hspan
+%
+%typen von tablllen, longtblr, talltblr
+%
+%mathe -> auch bibliotek konzept
+%
+%tikz
+%
+% childindex und counters
+
+\begin{frame}
+  \frametitle{Nachteile}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item Langsam
+        \item keine getaggted Tabellen
+        \item umständliche Expansion von Makros
+      \end{itemize}   
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-warning}\hspace*{1cm}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Noch neugierig?}
+  \begin{itemize}
+    \item \fullcite{tabularray}
+    \item \fullcite{github}
+    \item \fullcite{Maggi:2023:DBP}
+  \end{itemize}
+\end{frame}
+
+
+\end{document}

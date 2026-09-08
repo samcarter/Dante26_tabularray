@@ -1,0 +1,3 @@
+[submodule "beamertheme-sam"]
+	path = beamertheme-sam
+	url = git@github.com:samcarter/beamertheme-sam.git
