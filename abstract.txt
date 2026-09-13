@@ -1,0 +1,12 @@
+Title: Von Beamer zu ltx-talk
+
+Sprecher: samcarter
+
+Zeitbedarf: 15+5 Minuten
+
+Art der Präsentation: Lightning Talk
+
+Zusammenfassung: Die ltx-talk Klasse ist eine neue, noch experimentelle Klasse um Präsentationen mit LaTeX zu erstellen. Im Gegensatz zu beamer, kann ltx-talk barrierefreie, getaggte Folien generieren.
+In diesem Vortrag möchte ich von meinen Erfahrungen beim Wechsel von beamer zu ltx-talk berichten und anderen Wagemutigen einige Tips und Tricks mit auf den Weg geben.
+
+Anmerkung: Tagging wird nicht der Schwerpunkt des Vortrags sein, wird aber erwähnt werden. Falls es für den Tagging-Vortragsblock zu wenige Anmeldungen gibt, könnte dieser Vortrag notfalls unter dieser Rubrik laufen, ein wirklicher Tagging-Vortrag wird es aber sicher nicht.

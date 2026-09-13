@@ -1,0 +1,313 @@
+% !TEX spellcheck = de
+\DocumentMetadata{lang=de}
+\documentclass{ltx-talk}
+
+\makeatletter
+\providecommand*{\input@path}{}
+\g@addto@macro\input@path{{./include/}{./beamertheme-sam/}}
+\makeatother
+
+\definecolor{theme}{HTML}{870030}
+
+\usepackage[
+  themecolor=theme,
+]{talkthemesam}
+
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+\usepackage{fontawesome7}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{ltx-talk.bib}
+\DeclareLabeldate{%
+  \field{date}
+  \field{year}
+  \field{eventdate}
+  \field{origdate}
+  \field{urldate}
+}
+\NewDocumentEnvironment{notes}{b}{}{}
+
+\title{Von Beamer zu ltx-talk}
+\subtitle{Ein Nutzerbericht}
+\titlegraphic{Schloss_Biebrich,_Nordseite,_Wiesbaden-Biebrich,_150904,_ako}
+\titlecredit{
+  Titelbild: \href{https://commons.wikimedia.org/wiki/File:Schloss_Biebrich,_Nordseite,_Wiesbaden-Biebrich,_150904,_ako.jpg}{Ansgar Koreng (CC BY 3.0 via wikimedia commons)}%
+}
+\author{samcarter}
+\institute{Dante Herbsttagung Wiesbaden}
+\date{25.\,-- 26.\ September 2026}
+
+\begin{document}
+
+\maketitle
+\begin{notes}
+Danke für die Einführung. Wie schon erwähnt, werde ich heute über den Wechsel von beamer zu ltx-talk sprechen aus der Perspektive eines Nutzers sprechen.
+\end{notes}
+
+\begin{frame}
+\frametitle{Was ist ltx-talk}
+
+\begin{notes}
+content...
+\end{notes}
+\end{frame}
+
+\begin{frame}
+  \thispagestyle{plain}
+  \begin{tikzpicture}[
+    remember picture,
+    overlay,
+    bubble/.style={
+      fill=white,
+      fill opacity=0.7,
+      text opacity=1,
+      inner sep=0.3cm,
+      font=\Large,
+      shape=ellipse
+    }
+  ]
+    \node at (current page.center) {\includegraphics[width=\paperwidth]{David_Garrick_Between_Tragedy_and_Comedy}};
+    \node[bubble] at (3,-3) {ltx-talk};
+    \node[bubble] at (7,0) {me};
+    \node[bubble] at (12.5,-2) {beamer};
+    \node[anchor=south,white] at (current page.south) {Joshua Reynolds (1761) \emph{\enquote{David Garrick zwischen Tragödie und Komödie}}};
+  \end{tikzpicture}
+  \begin{notes}
+    so, was hat mich nun dazu bewegt, von beamer, von dem ich schon seit Jahren ein großer Fan bin, zu ltx-talk zu wechseln? 
+  \end{notes}
+\end{frame}
+
+%\begin{frame}<-2>
+%  \frametitle{Zisterzienser Ziffern}
+%  \begin{minipage}{.48\textwidth}
+%    \begin{onlyenv}<1>%
+%      \begin{itemize}
+%        \item mittelalterliches Zahlensystem
+%        \item Zisterzienser Orden, frühes 13. bis 15. Jhd
+%        \item andere Verwendungen bis ins frühe 18. Jhd
+%        \begin{itemize}
+%        \item Weinhandel um Brügge
+%        \item Freimaurer in Paris
+%        \item \ldots
+%        \end{itemize}
+%      \end{itemize}
+%    \end{onlyenv}%
+%    \begin{onlyenv}<2->%
+%      \cistercianset{height=4cm,stroke=2mm}
+%      \begin{tikzpicture}
+%        \node (cis) {%
+%          \only<-2>{\cistercian{1337}}%
+%          \only<3->{\cistercian{1989}}%
+%        };
+%
+%        \node[samorange,font=\bfseries,anchor=south west] at (1.5,1) {Einer};
+%        \draw<2>[samorange,line width=2mm] (0.1,1.9) -- ++(1.2333,0) -- ++(0,-1.3333);
+%        \draw<3->[samorange,line width=2mm] (0.1,1.9) -| ++(1.2333,-1.3333) -- ++(-1.2333,0);
+%
+%        \node[samred,font=\bfseries,anchor=south east] at (-1.5,1) {Zehner};
+%        \draw<2>[samred,line width=2mm] (-0.1,1.9) -- ++(-1.3333,-1.3333);
+%        \draw<4->[samred,line width=2mm] (-0.1,2) ++ (-1.2333,0) |- ++(1.2333,-1.4333);
+%
+%        \node[samlblue,font=\bfseries,anchor=north west] at (1.5,-1) {Hunderter};
+%        \draw<2>[samlblue,line width=2mm] (0.1,-1.9) -- ++(1.3333,1.3333);
+%        \draw<5->[samlblue,line width=2mm] (0.1,-1.9) -| ++(1.2333,1.3333) -- ++(-1.2333,0);
+%
+%        \node[samlgreen,font=\bfseries,anchor=north east] at (-0.9,-1) {Tausender};
+%        \draw<2,6->[samlgreen,line width=2mm] (-0.1,-1.9) -- ++(-1.3333,0);
+%
+%        \draw<2>[black,line width=2mm] (0,-2) -- (0,2);
+%
+%        \node[anchor=north,font=\bfseries\Huge] at ([yshift=-1cm]cis.south) {-\kern0.15em-\kern0.15em-\kern0.15em-};
+%        \node<2>[anchor=north,font=\bfseries\Huge] at ([yshift=-0.3cm]cis.south) {%
+%          \textcolor{samlgreen}{1}%
+%          \textcolor{samlblue}{3}%
+%          \textcolor{samred}{3}%
+%          \textcolor{samorange}{7}%
+%        };
+%        \node<2>[anchor=north,overlay] at ([yshift=-1.5cm]cis.south) {(MCCCXXXVII)};
+%        \node<3->[anchor=north,font=\bfseries\Huge] at ([yshift=-0.3cm]cis.south) {%
+%          \uncover<7->{\textcolor{samlgreen}{1}}%
+%          \uncover<6->{\textcolor{samlblue}{9}}%
+%          \uncover<5->{\textcolor{samred}{8}}%
+%          \uncover<4->{\textcolor{samorange}{9}}%
+%        };
+%      \end{tikzpicture}%
+%    \end{onlyenv}%
+%  \end{minipage}%
+%  \hfill  
+%  \begin{minipage}{.5\textwidth}
+%    \cistercianset{height=1cm,stroke=1mm,baseline=0.3cm}%
+%    \setcounter{mycell}{0}%
+%    \begin{tblr}{
+%      width=.9\textwidth,
+%      colspec={@{}XXXX[2]@{}},
+%      cells={
+%        halign=r,
+%        cmd={%
+%          \addtocounter{mycell}{1}%
+%          \themycell:%
+%          \cistercian{\themycell}%
+%        }
+%      },
+%      cell{1-3}{4}={
+%        cmd={
+%          \fpeval{10^\therownum}:%
+%          \cistercian{\fpeval{10^\therownum}}%
+%        }
+%      },
+%      rows={rowsep+=2mm},
+%    }
+%      & & &\\
+%      & & &\\
+%      & & &\\
+%    \end{tblr}
+%    
+%    \bigskip
+%    
+%    (nach einem Astrolabium aus dem frühen 16. Jhd)
+%  \end{minipage}%
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{\LaTeX\ Pakete}
+%  \label{packages}
+%  \begin{columns}[vertical-alignment=top]
+%    \begin{column}[t]{.5\textwidth}
+%      {\Huge\packagex\par}
+%      \bigskip
+%      \colorlet{structure}{samred}
+%      \begin{itemize}
+%        \item Autor: Jonathan Spratte
+%        \item sehr schnell
+%        \item viele Optionen
+%        \item Querformat und alt.\ Formen
+%      \end{itemize}
+%    \end{column}
+%    \begin{column}{.45\textwidth}
+%      {\Huge\packagec\par}
+%      \bigskip
+%      \colorlet{structure}{samlblue}
+%      \begin{itemize}
+%        \item Autor: samcarter
+%        \item Ti\emph{k}Z-basiert
+%        \item Linien-Übergänge
+%        \item Anpassung an Schriftart
+%      \end{itemize}
+%    \end{column}
+%  \end{columns}
+%\end{frame}
+%
+%\IfFileExists{Xisterzienser.pdf}{\includepdf[pages=1-]{Xisterzienser}}{}
+%
+%\begingroup
+%\colorlet{structure}{samlblue}
+%\begin{frame*}
+%  \frametitle{\packagec*: Einfaches Beispiel}
+%  \begin{tcblisting}{}
+%    \documentclass{article}
+%
+%    \usepackage{cistercian}
+%    \pagenumbering{cistercian}
+%
+%    \begin{document}
+%
+%    \cistercian{3} Haselnüsse für Aschenbrödel
+%
+%    \end{document}
+%  \end{tcblisting}
+%\end{frame*}
+%
+%\begin{frame*}
+%  \frametitle{\packagec*: Anpassungsfähig}
+%  \begin{tcblisting}{}
+%    \color{red} Jim Knopf und die wilde \cistercian{13}
+%  \end{tcblisting}
+%  \begin{tcblisting}{}
+%    \Huge Die \cistercian{7} Zwerge
+%  \end{tcblisting}
+%  \begin{tcblisting}{}
+%    \Huge\fontfamily{ugq}\selectfont
+%    \cistercian{1001} Nacht
+%  \end{tcblisting}
+%\end{frame*}
+%
+%\begin{frame*}
+%  \frametitle{\packagec*: Optionen}
+%  \begin{tcblisting}{}
+%    \cistercianset{stroke=1mm}
+%
+%    Ali Baba und die \cistercian[height=1cm]{40} Räuber
+%  \end{tcblisting}
+%\end{frame*}
+%
+%\begin{frame*}
+%  \frametitle{\packagec*: Ti\emph{k}Z-basiert}
+%  \begin{tcblisting}{}
+%    Goldlöckchen und die \cistercian[draw=red]{3} Bären
+%  \end{tcblisting}
+%  \begin{tcblisting}{before lower app=\hskip-1cm}
+%    \cistercianset{scale=8}
+%    \cistercian[line join=round]{3}
+%    \cistercian[line join=bevel]{3}
+%    \cistercian[line join=miter]{3}
+%  \end{tcblisting}
+%\end{frame*}
+%\endgroup
+%
+%\begin{frame*}
+%  \frametitle{\protect\tikz[scale=0.6,baseline=0.5cm]{\panda}~~Panda Pakete}
+%  \begin{tcblisting}{
+%    before lower app=\setlength{\parskip}{\bigskipamount},
+%    listing and comment,
+%    listing outside comment,
+%    comment={%
+%      \fontfamily{cmr}\selectfont
+%      Computer Modern Roman:
+%      \rule{ \CleverPanda{} }{1.6ex}
+%  
+%      \fontfamily{ugq}\selectfont
+%      URW Grotesk:
+%      \rule{ \CleverPanda{} }{1.6ex}
+%    }
+%  }
+%    \usepackage{CleverPanda}
+%
+%    \rule{ \CleverPanda{} }{1.6ex}
+%  \end{tcblisting}
+%
+%  \bigskip
+%
+%  \begin{tcblisting}{
+%    before lower app=\setlength{\parskip}{\bigskipamount},
+%    listing and comment,
+%    listing outside comment,
+%    comment={%
+%      \fontfamily{cmr}\selectfont
+%      Computer Modern Roman:
+%      \BusyPanda{}
+%  
+%      \fontfamily{ugq}\selectfont
+%      URW Grotesk:
+%      \BusyPanda{}
+%    }
+%  }
+%    \usepackage{BusyPanda}
+%
+%    \BusyPanda{}
+%  \end{tcblisting}
+%\end{frame*}
+%
+\begin{frame}
+  \frametitle{Abenteuerlustig?}
+  \begin{itemize}
+    \item \fullcite{ltx-talk}
+    \item \fullcite{Wright:TB47-1:64}
+    \item Tim Prescott (2026). \enquote{Creating accessible presentations with ltx-talk}. TUG 2026 (Calgary). \textsc{recording:} \url{https://www.youtube.com/watch?v=pltqpUBeG24}
+    \linebreak\textsc{preprint:} \url{https://tug.org/tug2026/preprints/prescott-ltx-talk.pdf}
+  \end{itemize}
+\end{frame}
+
+
+\end{document}
