@@ -43,7 +43,7 @@ listingsutf8
 # for this presentation ########################################################
 babel
 babel-german
-# biblatex
+biblatex
 # bigintcalc
 # bitset
 # catchfile
@@ -68,13 +68,13 @@ csquotes
 # kvoptions
 # kvsetkeys
 # l3kernel
-# l3packages
+l3packages
 # latex
 # latex2pydata
 # latexconfig
 # logreq
 # ltxcmds
-# ninecolors
+ninecolors
 # pdfescape
 # pdflscape
 # pdfpages
