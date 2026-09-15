@@ -19,6 +19,8 @@ xcolor
 bookmark
 epstopdf-pkg
 pdfmanagement
+metafont
+mfware
 #
 # for sam theme ################################################################
 beamertheme-spectrum
@@ -39,8 +41,6 @@ listings
 listingsutf8
 #
 # for this presentation ########################################################
-# metafont
-# mfware
 babel
 babel-german
 # biblatex
@@ -92,3 +92,4 @@ biber
 # marvosym
 lucide-icons
 xstring
+simplekv
