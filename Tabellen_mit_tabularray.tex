@@ -14,26 +14,26 @@
 ]{talkthemesam}
 
 \tcbset{colback=gray!10,before lower app={\centering}}
-%
-%\usepackage[ngerman]{babel}
-%\usepackage{csquotes}
-%\usepackage{lucide-icons}
-%\usepackage{tabularray}
-%\UseTblrLibrary{booktabs}
-%\UseTblrLibrary{tikz}
-%\UseTblrLibrary{counter}
-%\UseTblrLibrary{amsmath}
-%
-%\usepackage[style=authoryear]{biblatex}
-%\addbibresource{\jobname.bib}
-%\DeclareFieldFormat{doi}{%
-%  \newline
-%  \mkbibacro{DOI}\addcolon\space
-%  \ifhyperref
-%    {\href{https://doi.org/#1}{\nolinkurl{#1}}}
-%    {\nolinkurl{#1}}}
-%\DeclareFieldFormat{url}{\newline\mkbibacro{URL}\addcolon\space\url{#1}}    
-%
+
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+\usepackage{lucide-icons}
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{tikz}
+\UseTblrLibrary{counter}
+\UseTblrLibrary{amsmath}
+
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{\jobname.bib}
+\DeclareFieldFormat{doi}{%
+  \newline
+  \mkbibacro{DOI}\addcolon\space
+  \ifhyperref
+    {\href{https://doi.org/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}}
+\DeclareFieldFormat{url}{\newline\mkbibacro{URL}\addcolon\space\url{#1}}    
+
 \title{Tabellen mit Tabularray}
 \titlegraphic{Schloss_Biebrich,_Nordseite,_Wiesbaden-Biebrich,_150904,_ako}
 \titlecredit{
