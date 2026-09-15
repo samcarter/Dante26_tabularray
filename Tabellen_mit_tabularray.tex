@@ -13,7 +13,7 @@
   themecolor=theme,
 ]{talkthemesam}
 
-\tcbset{colback=gray!10,before lower app={\centering}}
+\colorlet{lightgray}{samlgray!20}
 
 \usepackage[ngerman]{babel}
 \usepackage{csquotes}
@@ -154,6 +154,24 @@
 %tikz
 %
 % childindex und counters
+
+\begin{frame*}
+  \frametitle{Mathe}
+  \begin{tcblisting}{}
+    \UseTblrLibrary{amsmath}
+    
+    \begin{equation*}
+      \begin{+pmatrix}[
+        cell{2}{2}={bg=lightgray}
+      ]
+        a & b & c\\
+        1 & 2 & 3\\
+        4 & 5 & 6\\ 
+      \end{+pmatrix}
+    \end{equation*}
+  \end{tcblisting}  
+  ...
+\end{frame*}
 
 \begin{frame}
   \frametitle{Nachteile}
