@@ -5,7 +5,6 @@ latexmk
 #
 # for ltx-talk #################################################################
 ltx-talk
-pdfmanagement-testphase
 tagpdf
 latex-lab
 tools
@@ -38,61 +37,56 @@ pdfcol
 listings
 listingsutf8
 #
-# misc #########################################################################
-metafont
-mfware
-catchfilebetweentags
-xistercian
-cistercian
-panda
+# for this presentation ########################################################
+# metafont
+# mfware
 babel
 babel-german
-biblatex
-bigintcalc
-bitset
-catchfile
-ccicons
+# biblatex
+# bigintcalc
+# bitset
+# catchfile
+# ccicons
 csquotes
-environ
-eso-pic
-etexcmds
-fancyvrb
-float
-fvextra
-gettitlestring
-graphics
-graphics-cfg
-graphics-def
-grotesq
-hycolor
-hyphen-german
-infwarerr
-intcalc
-kvdefinekeys
-kvoptions
-kvsetkeys
-l3backend
-l3kernel
-l3packages
-latex
-latex2pydata
-latexconfig
-logreq
-ltxcmds
-ninecolors
-pdfescape
-pdflscape
-pdfpages
-pdftexcmds
-pgf
-pgfopts
-refcount
+# environ
+# eso-pic
+# etexcmds
+# fancyvrb
+# float
+# fvextra
+# gettitlestring
+# graphics
+# graphics-cfg
+# graphics-def
+# grotesq
+# hycolor
+# hyphen-german
+# infwarerr
+# intcalc
+# kvdefinekeys
+# kvoptions
+# kvsetkeys
+# l3kernel
+# l3packages
+# latex
+# latex2pydata
+# latexconfig
+# logreq
+# ltxcmds
+# ninecolors
+# pdfescape
+# pdflscape
+# pdfpages
+# pdftexcmds
+# pgf
+# pgfopts
+# refcount
 tabularray
-trimspaces
-url
-expkv-bundle
-dvips
+# trimspaces
+# url
+# expkv-bundle
+# dvips
 biber
-etex-pkg
-marvosym
-tikzlings
+# etex-pkg
+# marvosym
+lucide-icons
