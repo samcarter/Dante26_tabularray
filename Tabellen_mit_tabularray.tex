@@ -47,138 +47,138 @@
 
 \maketitle
 
-%\begin{frame}
-%  \frametitle{Was ist Tabularray}
-%  \begin{columns}
-%    \begin{column}{.5\textwidth}
-%      \begin{itemize}
-%        \item modernes Paket für Tabellen und Arrays
-%        \item veröffentlicht in 2021 von Jianrui Lyu
-%        \item adoptiert von den TeXackers
-%        \item erlaubt Trennung von Format und Inhalt
-%        \item sehr mächtig
-%      \end{itemize}   
-%    \end{column}
-%    \begin{column}{.5\textwidth}
-%      \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-question-mark}\hspace*{1cm}
-%    \end{column}
-%  \end{columns}  
-%\end{frame}
+\begin{frame}
+  \frametitle{Was ist Tabularray}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item modernes Paket für Tabellen und Arrays
+        \item veröffentlicht in 2021 von Jianrui Lyu
+        \item adoptiert von den TeXackers
+        \item erlaubt Trennung von Format und Inhalt
+        \item sehr mächtig
+      \end{itemize}   
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-question-mark}\hspace*{1cm}
+    \end{column}
+  \end{columns}  
+\end{frame}
+
+\begin{frame*}
+  \frametitle{Einfaches Beispiel}
+  \begin{tcblisting}{}
+    \usepackage{tabularray}
+    
+    \begin{tblr}{}
+      a & b & c\\
+      1 & 2 & 3\\
+      4 & 5 & 6\\      
+    \end{tblr}
+  \end{tcblisting}  
+\end{frame*}
+
+\begin{frame*}
+  \frametitle{Viele Wege führen nach Rom...}
+  \tcbset{equal height group=diabox, valign=center}%
+  \vskip-0.4cm
+  
+  \begin{columns}[vertical-alignment=top]
+    \begin{column}{.3\textwidth}
+      \begin{tcblisting}{
+        sidebyside=false,
+        listing above text,
+        title=Direkt
+      }
+        \begin{tblr}{}
+          \hline[.08em]
+          a & b & c\\
+          \hline[.05em]
+          1 & 2 & 3\\
+          \hline[.08em]
+        \end{tblr}
+      \end{tcblisting}  
+    \end{column}
+    \begin{column}{.3\textwidth}
+      \begin{tcblisting}{
+        sidebyside=false,
+        listing above text,
+        title=Tabellen-Präamble
+      }
+        \begin{tblr}{
+          hline{1,Z}={.08em},
+          hline{2}={.05em}
+        }
+          a & b & c\\
+          1 & 2 & 3\\ 
+        \end{tblr}
+      \end{tcblisting}  
+    \end{column}  
+    \begin{column}{.3\textwidth}
+      \begin{tcblisting}{
+        sidebyside=false,
+        listing above text,
+        title=Global
+      }
+        \SetTblrInner{
+          hline{1,Z}={.08em},
+          hline{2}={.05em}
+        }
+        \begin{tblr}{}
+          a & b & c\\
+          1 & 2 & 3\\ 
+        \end{tblr}
+      \end{tcblisting}  
+    \end{column}        
+  \end{columns}
+\end{frame*}
+
+\begin{frame*}
+  \frametitle{Werkzeugkiste: Linien}
+\end{frame*}
+
+%linien
 %
-%\begin{frame*}
-%  \frametitle{Einfaches Beispiel}
-%  \begin{tcblisting}{}
-%    \usepackage{tabularray}
-%    
-%    \begin{tblr}{}
-%      a & b & c\\
-%      1 & 2 & 3\\
-%      4 & 5 & 6\\      
-%    \end{tblr}
-%  \end{tcblisting}  
-%\end{frame*}
+%farben
 %
-%\begin{frame*}
-%  \frametitle{Viele Wege führen nach Rom...}
-%  \tcbset{equal height group=diabox, valign=center}%
-%  \vskip-0.4cm
-%  
-%  \begin{columns}[vertical-alignment=top]
-%    \begin{column}{.3\textwidth}
-%      \begin{tcblisting}{
-%        sidebyside=false,
-%        listing above text,
-%        title=Direkt
-%      }
-%        \begin{tblr}{}
-%          \hline[.08em]
-%          a & b & c\\
-%          \hline[.05em]
-%          1 & 2 & 3\\
-%          \hline[.08em]
-%        \end{tblr}
-%      \end{tcblisting}  
-%    \end{column}
-%    \begin{column}{.3\textwidth}
-%      \begin{tcblisting}{
-%        sidebyside=false,
-%        listing above text,
-%        title=Tabellen-Präamble
-%      }
-%        \begin{tblr}{
-%          hline{1,Z}={.08em},
-%          hline{2}={.05em}
-%        }
-%          a & b & c\\
-%          1 & 2 & 3\\ 
-%        \end{tblr}
-%      \end{tcblisting}  
-%    \end{column}  
-%    \begin{column}{.3\textwidth}
-%      \begin{tcblisting}{
-%        sidebyside=false,
-%        listing above text,
-%        title=Global
-%      }
-%        \SetTblrInner{
-%          hline{1,Z}={.08em},
-%          hline{2}={.05em}
-%        }
-%        \begin{tblr}{}
-%          a & b & c\\
-%          1 & 2 & 3\\ 
-%        \end{tblr}
-%      \end{tcblisting}  
-%    \end{column}        
-%  \end{columns}
-%\end{frame*}
+%zellen können noch mehr, mode text imath
 %
-%\begin{frame*}
-%  \frametitle{Werkzeugkiste: Linien}
-%\end{frame*}
+% columns, rows
 %
-%%linien
-%%
-%%farben
-%%
-%%zellen können noch mehr, mode text imath
-%%
-%% columns, rows
-%%
-%%alignment, mergen, hspan
-%%
-%%typen von tablllen, longtblr, talltblr
-%%
-%%mathe -> auch bibliotek konzept
-%%
-%%tikz
-%%
-%% childindex und counters
+%alignment, mergen, hspan
 %
-%\begin{frame}
-%  \frametitle{Nachteile}
-%  \begin{columns}
-%    \begin{column}{.5\textwidth}
-%      \begin{itemize}
-%        \item Langsam
-%        \item keine getaggted Tabellen
-%        \item umständliche Expansion von Makros
-%      \end{itemize}   
-%    \end{column}
-%    \begin{column}{.5\textwidth}
-%      \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-warning}\hspace*{1cm}
-%    \end{column}
-%  \end{columns}
-%\end{frame}
+%typen von tablllen, longtblr, talltblr
 %
-%\begin{frame}
-%  \frametitle{Noch neugierig?}
-%  \begin{itemize}
-%    \item \fullcite{tabularray}
-%    \item \fullcite{github}
-%    \item \fullcite{Maggi:2023:DBP}
-%  \end{itemize}
-%\end{frame}
+%mathe -> auch bibliotek konzept
+%
+%tikz
+%
+% childindex und counters
+
+\begin{frame}
+  \frametitle{Nachteile}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item Langsam
+        \item keine getaggted Tabellen
+        \item umständliche Expansion von Makros
+      \end{itemize}   
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-warning}\hspace*{1cm}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Noch neugierig?}
+  \begin{itemize}
+    \item \fullcite{tabularray}
+    \item \fullcite{github}
+    \item \fullcite{Maggi:2023:DBP}
+  \end{itemize}
+\end{frame}
 
 
 \end{document}

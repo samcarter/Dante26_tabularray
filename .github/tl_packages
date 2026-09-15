@@ -44,54 +44,15 @@ listingsutf8
 babel
 babel-german
 biblatex
-# bigintcalc
-# bitset
-# catchfile
-# ccicons
+biber
 csquotes
-# environ
-# eso-pic
-# etexcmds
-# fancyvrb
-# float
-# fvextra
-# gettitlestring
-# graphics
-# graphics-cfg
-# graphics-def
-# grotesq
-# hycolor
-# hyphen-german
-# infwarerr
-# intcalc
-# kvdefinekeys
-# kvoptions
-# kvsetkeys
-# l3kernel
 l3packages
-# latex
-# latex2pydata
-# latexconfig
-# logreq
-# ltxcmds
 ninecolors
-# pdfescape
-# pdflscape
-# pdfpages
-# pdftexcmds
+tabularray
 pgf
 pgfopts
-# refcount
-tabularray
-# trimspaces
-# url
-# expkv-bundle
-# dvips
-biber
-# etex-pkg
-# marvosym
+booktabs
+varwidth
 lucide-icons
 xstring
 simplekv
-booktabs
-varwidth
