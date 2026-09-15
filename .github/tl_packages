@@ -18,6 +18,7 @@ stringenc
 xcolor
 bookmark
 epstopdf-pkg
+pdfmanagement
 #
 # for sam theme ################################################################
 beamertheme-spectrum
