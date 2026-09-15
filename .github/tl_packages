@@ -79,8 +79,8 @@ ninecolors
 # pdflscape
 # pdfpages
 # pdftexcmds
-# pgf
-# pgfopts
+pgf
+pgfopts
 # refcount
 tabularray
 # trimspaces
@@ -94,3 +94,4 @@ lucide-icons
 xstring
 simplekv
 booktabs
+varwidth
