@@ -19,6 +19,7 @@
 
 \colorlet{lightgray}{samlgray!20}
 \colorlet{red}{themecolor}
+\tcbset{lefthand ratio=0.65}
 
 \usepackage[ngerman]{babel}
 \usepackage{csquotes}
@@ -56,7 +57,7 @@
 \begin{frame}
   \frametitle{Was ist Tabularray}
   \begin{columns}
-    \begin{column}{.5\textwidth}
+    \begin{column}{.65\textwidth}
       \begin{itemize}
         \item modernes Paket für Tabellen und Arrays
         \item veröffentlicht in 2021 von Jianrui Lyu
@@ -65,7 +66,7 @@
         \item sehr mächtig
       \end{itemize}   
     \end{column}
-    \begin{column}{.5\textwidth}
+    \begin{column}{.35\textwidth}
       \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-question-mark}\hspace*{1cm}
     \end{column}
   \end{columns}  
@@ -145,11 +146,32 @@
   \frametitle{Linien}
 \end{frame*}
 
+\begin{frame*}
+  \frametitle{Zählen}
+  \begin{tcblisting}{}
+    \begin{tblr}{}
+      x & \therownum & x \\
+      \therownum & x & x \\
+      \thecolcount/\therowcount & x & x \\
+    \end{tblr}
+  \end{tcblisting}
+  \begin{tcblisting}{}
+    \begin{tblr}{
+      row{1}={cmd=\thecolnum},
+      column{1}={cmd=\therownum},
+    }
+      &   &  \\
+      & x & x\\
+      & x & x\\
+    \end{tblr}
+  \end{tcblisting}  
+\end{frame*}
+
 %linien
 %
 %farben
 %
-%zellen können noch mehr, mode text imath
+%zellen können noch mehr, mode text imath, cmd
 %
 % columns, rows
 %
@@ -188,8 +210,7 @@
     
     \begin{tblrtikzabove}
       \draw[red,ultra thick,->] 
-        (table.north west) -- 
-        (2-2.south east);
+        (table.north west) -- (2-2.south east);
     \end{tblrtikzabove}%
     \begin{tblr}{}
       a & b & c\\
@@ -199,36 +220,60 @@
   \end{tcblisting}
 \end{frame*}
 
-booktabs
-counter
+\begin{frame*}
+  \frametitle{Professionelle Tabellen mit booktabs}
+  \begin{tcblisting}{}
+    \UseTblrLibrary{booktabs}
+   
+    \begin{tblr}{}
+      \toprule
+      a & \SetCell[c=2]{halign=c} b & \\
+      \cmidrule[r]{1}\cmidrule[l]{2-3}
+      c & d & e\\
+      \midrule
+      1 & 2 & 3\\
+      4 & 5 & 6\\
+      \bottomrule 
+    \end{tblr}
+  \end{tcblisting}
+\end{frame*}
 
 \begin{frame*}
-Weitere Biblioteken:
-\begin{itemize}
-\item diagbox
-\item functional
-\item hook
-\item html
-\item nameref
-\item zref
-\item varwidth
-\item siunitx
-\item babel (\saminline|\usepackage{tblr-extras}|)
-\item caption (\saminline|\usepackage{tblr-extras}|)
-\end{itemize}
+  \frametitle{Weitere Bibliotheken:}
+  \begin{columns}
+    \begin{column}{.65\textwidth}
+      \begin{itemize}
+        \item siunitx
+        \item varwidth
+        \item hook
+        \item counter
+        \item babel (via \saminline|\usepackage{tblr-extras}|)
+        \item caption (via \saminline|\usepackage{tblr-extras}|)
+      \end{itemize}
+    \end{column}
+    \begin{column}{.35\textwidth}
+      \begin{itemize}
+        \item diagbox
+        \item html
+        \item nameref
+        \item zref
+        \item functional      
+      \end{itemize}
+    \end{column}  
+  \end{columns}
 \end{frame*}
 
 \begin{frame}
   \frametitle{Nachteile}
   \begin{columns}
-    \begin{column}{.5\textwidth}
+    \begin{column}{.65\textwidth}
       \begin{itemize}
         \item langsamer als klassische Tabellen
         \item keine getaggted Tabellen
         \item umständliche Expansion/optionale Argumente
       \end{itemize}   
     \end{column}
-    \begin{column}{.5\textwidth}
+    \begin{column}{.35\textwidth}
       \hfill\color{themecolor}\lucideicon[height=4cm]{message-circle-warning}\hspace*{1cm}
     \end{column}
   \end{columns}
