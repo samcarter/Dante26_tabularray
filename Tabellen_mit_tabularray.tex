@@ -13,6 +13,29 @@
   themecolor=theme,
 ]{talkthemesam}
 
+\makeatletter
+\ExplSyntaxOn
+\DeclareTemplateCode { sectionpage } { talk } { 0 } { } {
+  \begin{frame}
+    \centerline{
+      \setlength\unitlength{1cm}
+      \begin{picture}(\paperwidth,\paperheight)(0,\dimeval{-\Gm@tmargin-\headsep})
+        \put(0,\dimeval{\paperheight-3.5cm}){\color{structure}\rule{\paperwidth}{3.5cm}}
+        \str_if_eq:eeF {\@sectiongraphic} {none} {
+          \put(0,\dimeval{\paperheight-3.15cm}){\includegraphics[width=\paperwidth,artifact]{\@sectiongraphic}}
+        }
+        \put(\Gm@lmargin,\dimeval{\paperheight-6cm}){
+          \LARGE\color{samdgray}\l__talk_section_tl\par
+        }
+      \end{picture}
+    }% centerline
+    \vskip-\Gm@tmargin
+    \vskip-\headsep
+  \end{frame}
+}
+\ExplSyntaxOff
+\makeatother
+
 \AddToHook{section/begin}{
   \UseTemplate{sectionpage}{talk}{}
 }
@@ -57,15 +80,15 @@
 
 % Was ist tabularray
 \begin{frame}
-  \frametitle{Was ist Tabularray}
+  \frametitle{Was ist Tabularray?}
   \begin{columns}
     \begin{column}{.65\textwidth}
       \begin{itemize}
-        \item modernes Paket für Tabellen und Arrays
+        \item modernes Paket für Tabellen und Matrizen
         \item veröffentlicht in 2021 von Jianrui Lyu
-        \item adoptiert von den TeXackers
+        \item 2026 adoptiert von den TeXackers
         \item erlaubt Trennung von Format und Inhalt
-        \item sehr mächtig (heute Grundlagen und Highlights)
+        \item sehr mächtig mit vielen Funktionen
       \end{itemize}   
     \end{column}
     \begin{column}{.35\textwidth}
@@ -142,7 +165,7 @@
   \end{columns}
 \end{frame*}
 
-\section{Beispiele aus der Werkzeugkiste}
+\section{Beispiele aus der großen Werkzeugkiste}
 
 % Linien
 \begin{frame*}
@@ -166,9 +189,9 @@
 \begin{frame*}
   \frametitle{Spalten}
   \begin{tcblisting}{}
-    \begin{tblr}{|r|c|l|X[halign=c]|}
-      text & text & text & text           \\
-      a    & a    & a    & text text text \\
+    \begin{tblr}{|r|c|l|X|}
+      Text & Text & Text & Text           \\
+      a    & a    & a    & a a a a a \\
     \end{tblr}
   \end{tcblisting}  
   \begin{tcblisting}{}
@@ -176,7 +199,7 @@
       colspec={|r|Q[wd=1cm,halign=c]|},
       column{3}={halign=l}
     }
-      text & text & text\\
+      Text & Text & Text\\
       a    & a    & a   \\
     \end{tblr}
   \end{tcblisting}    
@@ -205,6 +228,7 @@
   \frametitle{Zellen}
   \begin{tcblisting}{}
     \begin{tblr}{
+      cells={halign=c},
       cell{1}{1}={mode=imath},
       cell{2-Z}{2}={
         font=\bfseries,
@@ -228,7 +252,7 @@
       cell{2}{2}={c=2}{},
     }
       \SetCell[r=3]{} a & b & c\\
-      & Langer Text & \\
+      & langer Text & \\
       & 5 & 6\\ 
     \end{tblr}
   \end{tcblisting}
@@ -301,7 +325,7 @@
 
 % siunitx
 \begin{frame*}
-  \frametitle{siunitx}
+  \frametitle{Spalten mit siunitx}
   \begin{tcblisting}{}
     \UseTblrLibrary{siunitx}
     
@@ -321,7 +345,7 @@
 
 % TikZ
 \begin{frame*}
-  \frametitle{Ti\emph{k}Z}
+  \frametitle{Dekorationen mit Ti\emph{k}Z}
   \begin{tcblisting}{}
     \UseTblrLibrary{tikz}
     
@@ -358,7 +382,7 @@
 
 % weitere Bibliotheken
 \begin{frame*}
-  \frametitle{Weitere Bibliotheken:}
+  \frametitle{Weitere Bibliotheken}
   \begin{columns}
     \begin{column}{.65\textwidth}
       \begin{itemize}
@@ -388,7 +412,7 @@
     \begin{column}{.65\textwidth}
       \begin{itemize}
         \item langsamer als klassische Tabellen
-        \item keine getaggted Tabellen
+        \item keine getaggten Tabellen
         \item umständliche Expansion/optionale Argumente
       \end{itemize}   
     \end{column}
@@ -400,7 +424,7 @@
 
 % Noch neugierig
 \begin{frame}
-  \frametitle{Noch neugierig?}
+  \frametitle{Neugierig?}
   \begin{itemize}
     \item \fullcite{tabularray}
     \item \fullcite{github}
