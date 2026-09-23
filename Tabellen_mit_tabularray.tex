@@ -149,18 +149,40 @@
 %
 %zellen können noch mehr, mode text imath, cmd
 %
-% columns, rows
+% rows
 %
 %alignment, mergen, hspan
-%
-%typen von tablllen, longtblr, talltblr
 
 % childindex
+
+% Spalten
+\begin{frame*}
+  \frametitle{Spalten}
+  \begin{tcblisting}{}
+    \begin{tblr}{
+      colspec={|l|c|r|X|}
+    }
+      text & text & text & text   \\
+      a    & a    & a    & text text text \\
+    \end{tblr}
+  \end{tcblisting}  
+  
+  \begin{tcblisting}{}
+    \begin{tblr}{
+      colspec={|Q[wd=1cm,halign=c]|}
+    }
+      text \\
+      a    \\
+    \end{tblr}
+  \end{tcblisting}    
+\end{frame*}
 
 % Linien
 \begin{frame*}
   \frametitle{Horizontale und vertikale Linien}
   \begin{tcblisting}{}
+    \usepackage{xcolor}
+  
     \begin{tblr}{
       hline{1}={solid},
       hline{2}={2-Z}{dashed,fg=red,wd=2pt},
@@ -204,12 +226,33 @@
   \end{tcblisting}  
 \end{frame*}
 
+% longtblr
+\begin{frame*}
+  \frametitle{Tabellen mit Seitenumbruch}
+  \begin{tcblisting}{}
+    \begin{longtblr}[
+      caption={Bildüberschrift},
+      label = {quack},
+    ]{
+      rowhead=1,
+      colspec={XX},
+      cells={halign=c},
+      hline{1,2,Z}={}
+    }
+      Title 1 & Title 2\\
+      1 & 2\\
+      3 & 4\\
+    \end{longtblr}
+  \end{tcblisting}   
+\end{frame*}
+
 \section{Bibliotheken}
 
 % Mathe
 \begin{frame*}
   \frametitle{Mathematik-Umgebungen mit amsmath}
   \begin{tcblisting}{}
+    \usepackage{xcolor}
     \UseTblrLibrary{amsmath}
     
     \begin{equation*}
@@ -222,7 +265,7 @@
       \end{+pmatrix}
     \end{equation*}
   \end{tcblisting}
-  \bigskip
+  \medskip
   
   Weitere: \saminline|+array|, \saminline|+matrix|, \saminline|+bmatrix|, \saminline|+Bmatrix|, \saminline|+vmatrix|, \saminline|+Vmatrix| und \saminline|+cases|
 \end{frame*}
