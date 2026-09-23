@@ -29,6 +29,7 @@
 \UseTblrLibrary{tikz}
 \UseTblrLibrary{counter}
 \UseTblrLibrary{amsmath}
+\UseTblrLibrary{siunitx}
 
 \usepackage[style=authoryear]{biblatex}
 \addbibresource{\jobname.bib}
@@ -91,8 +92,6 @@
 \begin{frame*}
   \frametitle{Viele Wege führen nach Rom...}
   \tcbset{equal height group=diabox, valign=center}%
-  \vskip-0.4cm
-  
   \begin{columns}[vertical-alignment=top]
     \begin{column}{.3\textwidth}
       \begin{tcblisting}{
@@ -143,39 +142,7 @@
   \end{columns}
 \end{frame*}
 
-\section{Werkzeugkiste}
-
-%farben
-%
-%zellen können noch mehr, mode text imath, cmd
-%
-% rows
-%
-%alignment, mergen, hspan
-
-% childindex
-
-% Spalten
-\begin{frame*}
-  \frametitle{Spalten}
-  \begin{tcblisting}{}
-    \begin{tblr}{
-      colspec={|l|c|r|X|}
-    }
-      text & text & text & text   \\
-      a    & a    & a    & text text text \\
-    \end{tblr}
-  \end{tcblisting}  
-  
-  \begin{tcblisting}{}
-    \begin{tblr}{
-      colspec={|Q[wd=1cm,halign=c]|}
-    }
-      text \\
-      a    \\
-    \end{tblr}
-  \end{tcblisting}    
-\end{frame*}
+\section{Beispiele aus der Werkzeugkiste}
 
 % Linien
 \begin{frame*}
@@ -195,14 +162,76 @@
   \end{tcblisting}  
 \end{frame*}
 
-% mehrzeilige Texte
+% Spalten
 \begin{frame*}
-  \frametitle{Mehrzeilige Texte}
+  \frametitle{Spalten}
   \begin{tcblisting}{}
-    \begin{tblr}{vlines,hlines}
-      a & {c \\ d}\\
+    \begin{tblr}{|r|c|l|X[halign=c]|}
+      text & text & text & text           \\
+      a    & a    & a    & text text text \\
     \end{tblr}
   \end{tcblisting}  
+  \begin{tcblisting}{}
+    \begin{tblr}{
+      colspec={|r|Q[wd=1cm,halign=c]|},
+      column{3}={halign=l}
+    }
+      text & text & text\\
+      a    & a    & a   \\
+    \end{tblr}
+  \end{tcblisting}    
+\end{frame*}
+
+% Zeilen
+\begin{frame*}
+  \frametitle{Zeilen}
+  \begin{tcblisting}{}
+    \usepackage{xcolor}
+   
+    \begin{tblr}{
+      rowspec={Q[t]Q[m]Q[b]},
+      row{1}={font=\bfseries},
+      row{odd}={bg=lightgray}
+    }
+    {Text \\ Text} & a & a \\
+    a & a & {Text \\ Text} \\
+    a & {Text \\ Text} & a \\
+    \end{tblr}
+  \end{tcblisting}  
+\end{frame*}
+
+% Zellen
+\begin{frame*}
+  \frametitle{Zellen}
+  \begin{tcblisting}{}
+    \begin{tblr}{
+      cell{1}{1}={mode=imath},
+      cell{2-Z}{2}={
+        font=\bfseries,
+        cmd=\fbox
+      }
+    }
+      \alpha & b & c\\
+      1 & 2 & 3\\
+      4 & 5 & 6\\ 
+    \end{tblr}
+  \end{tcblisting}  
+\end{frame*}
+
+% Zellen verbinden
+\begin{frame*}
+  \frametitle{Zellen kombinieren}
+  \begin{tcblisting}{}
+    \begin{tblr}{
+      vlines,hlines,
+      hspan=even,
+      cell{2}{2}={c=2}{},
+    }
+      \SetCell[r=3]{} a & b & c\\
+      & Langer Text & \\
+      & 5 & 6\\ 
+    \end{tblr}
+  \end{tcblisting}
 \end{frame*}
 
 % zählen
@@ -270,6 +299,26 @@
   Weitere: \saminline|+array|, \saminline|+matrix|, \saminline|+bmatrix|, \saminline|+Bmatrix|, \saminline|+vmatrix|, \saminline|+Vmatrix| und \saminline|+cases|
 \end{frame*}
 
+% siunitx
+\begin{frame*}
+  \frametitle{siunitx}
+  \begin{tcblisting}{}
+    \UseTblrLibrary{siunitx}
+    
+    \begin{tblr}{
+      colspec={
+        S[table-format=3.2]
+      },
+      hline{1,2,Z}={}
+    }
+      {Titel} \\
+      111    \\
+      2.1    \\
+      33.11  \\
+    \end{tblr}
+  \end{tcblisting}
+\end{frame*}
+
 % TikZ
 \begin{frame*}
   \frametitle{Ti\emph{k}Z}
@@ -313,7 +362,6 @@
   \begin{columns}
     \begin{column}{.65\textwidth}
       \begin{itemize}
-        \item siunitx
         \item varwidth
         \item hook
         \item counter
