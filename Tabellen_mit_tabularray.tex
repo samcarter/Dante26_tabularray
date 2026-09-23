@@ -13,7 +13,12 @@
   themecolor=theme,
 ]{talkthemesam}
 
+\AddToHook{section/begin}{
+  \UseTemplate{sectionpage}{talk}{}
+}
+
 \colorlet{lightgray}{samlgray!20}
+\colorlet{red}{themecolor}
 
 \usepackage[ngerman]{babel}
 \usepackage{csquotes}
@@ -36,6 +41,7 @@
 
 \title{Tabellen mit Tabularray}
 \titlegraphic{Schloss_Biebrich,_Nordseite,_Wiesbaden-Biebrich,_150904,_ako}
+\sectiongraphic{section}
 \titlecredit{
   Titelbild: \href{https://commons.wikimedia.org/wiki/File:Schloss_Biebrich,_Nordseite,_Wiesbaden-Biebrich,_150904,_ako.jpg}{Ansgar Koreng (CC BY 3.0 via wikimedia commons)}%
 }
@@ -133,8 +139,10 @@
   \end{columns}
 \end{frame*}
 
+\section{Werkzeugkiste}
+
 \begin{frame*}
-  \frametitle{Werkzeugkiste: Linien}
+  \frametitle{Linien}
 \end{frame*}
 
 %linien
@@ -148,15 +156,13 @@
 %alignment, mergen, hspan
 %
 %typen von tablllen, longtblr, talltblr
-%
-%mathe -> auch bibliotek konzept
-%
-%tikz
-%
+
 % childindex und counters
 
+\section{Bibliotheken}
+
 \begin{frame*}
-  \frametitle{Mathe}
+  \frametitle{Mathe mit amsmath}
   \begin{tcblisting}{}
     \UseTblrLibrary{amsmath}
     
@@ -169,8 +175,28 @@
         4 & 5 & 6\\ 
       \end{+pmatrix}
     \end{equation*}
-  \end{tcblisting}  
-  ...
+  \end{tcblisting}
+  \bigskip
+  
+  Weitere: \saminline|+array|, \saminline|+matrix|, \saminline|+bmatrix|, \saminline|+Bmatrix|, \saminline|+vmatrix|, \saminline|+Vmatrix| und \saminline|+cases|
+\end{frame*}
+
+\begin{frame*}
+  \frametitle{Ti\emph{k}Z}
+  \begin{tcblisting}{}
+    \UseTblrLibrary{tikz}
+    
+    \begin{tblrtikzabove}
+      \draw[red,ultra thick,->] 
+        (table.north west) -- 
+        (2-2.south east);
+    \end{tblrtikzabove}%
+    \begin{tblr}{}
+      a & b & c\\
+      1 & 2 & 3\\
+      4 & 5 & 6\\ 
+    \end{tblr}
+  \end{tcblisting}
 \end{frame*}
 
 \begin{frame}
@@ -178,9 +204,9 @@
   \begin{columns}
     \begin{column}{.5\textwidth}
       \begin{itemize}
-        \item Langsam
+        \item langsamer als klassische Tabellen
         \item keine getaggted Tabellen
-        \item umständliche Expansion von Makros
+        \item umständliche Expansion/optionale Argumente
       \end{itemize}   
     \end{column}
     \begin{column}{.5\textwidth}
@@ -197,6 +223,5 @@
     \item \fullcite{Maggi:2023:DBP}
   \end{itemize}
 \end{frame}
-
 
 \end{document}
